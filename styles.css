@@ -1,21 +1,216 @@
+/* styles.css */
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto Mono', monospace; /* Use a techy font like Roboto Mono */
+    background-color: #222; /* Dark background */
+    color: #eee; /* Light text color */
     margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s; /* Add transition for smooth change */
+  }
+  
+  header {
+    background-color: #111; /* Slightly darker header */
     padding: 20px;
-}
-
-header {
     text-align: center;
-    background-color: #f0f0f0;
+    transition: background-color 0.3s;
+  }
+  
+  h1, h2 {
+    margin: 0;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  h1 {
+    font-size: 3em;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+  }
+  
+  p {
+    margin: 10px 0;
+    line-height: 1.5;
+    transition: color 0.3s;
+  }
+  
+  a {
+    color: #00a8ff; /* Blue link color */
+    text-decoration: none;
+    transition: color 0.3s, text-shadow 0.3s;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  main {
     padding: 20px;
-}
+  }
 
-nav ul {
+  .work-in-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0.7); /* Semi-transparent red */
+    color: white;
+    padding: 10px;
+    text-align: center;
+    z-index: 99; /* Ensure it's on top */
+  }
+  section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 5px;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  
+  h3 {
+    font-size: 1.2em;
+    margin-top: 20px;
+    transition: color 0.3s;
+  }
+  
+  ul {
     list-style: none;
     padding: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+    transition: color 0.3s;
+  }
+  
+  ul li ul {
+    margin-left: 20px;
+  }
+  
+  /* Add some visual interest with subtle gradients */
+  section {
+    background: linear-gradient(to right, #222, #111);
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  /* Make the skills section stand out */
+  #skills {
+    background: linear-gradient(to right, #333, #222);
+    transition: background 0.3s; /* Add transition for smooth change */
+  }
+  
+  /* Add a subtle glow effect to the links */
+  a {
+    text-shadow: 0 0 5px #00a8ff;
+  }
+  
+  /* Add a subtle shadow to the header */
+  header {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Add a subtle shadow to the sections */
+  section {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Dark Mode Toggle */
+  .dark-mode-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    background-color: #eee;
+    color: #222;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    z-index: 100;
+  }
+  
+  .dark-mode-toggle.active {
+    background-color: #222;
+    color: #eee;
+  }
+  
+  /* Dark Mode Styles */
+  body.dark-mode {
+    background-color: #eee;
+    color: #222;
+  }
+  
+  header.dark-mode {
+    background-color: #eee;
+  }
+  
+  h1.dark-mode, h2.dark-mode {
+    color: #222;
+  }
+  
+  p.dark-mode {
+    color: #222;
+  }
+  
+  a.dark-mode {
+    color: #00a8ff; /* Keep link color the same */
+    text-shadow: 0 0 5px #00a8ff; /* Keep glow effect */
+  }
+  
+  section.dark-mode {
+    background: linear-gradient(to right, #eee, #ddd);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  #skills.dark-mode {
+    background: linear-gradient(to right, #ddd, #eee);
+  }
+
+
+/* Skills Section with Skill Bars */
+#skills-section {
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 5px;
+  background: linear-gradient(to right, #222, #111);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s, box-shadow 0.3s;
 }
 
-nav li {
-    display: inline;
-    margin-right: 20px; 
-} 
+.skill-container {
+  display: flex;
+  flex-direction: column; /* Stack skill bars vertically */
+  align-items: flex-start; /* Align skill bars to the left */
+}
+
+.skill-bar {
+  display: table;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.skill-name {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.skill-progress {
+  height: 10px;
+  background-color: #00a8ff; /* Blue progress bar */
+  border-radius: 5px;
+  width: 0%; /* Initial width is 0% */
+  transition: width 0.5s ease-in-out; /* Smooth transition for width change */
+}
+
+/* Dark Mode Styles for Skill Bars */
+#skills-section.dark-mode {
+  background: linear-gradient(to right, #eee, #ddd);
+}
+
+.skill-progress.dark-mode {
+  background-color: #00a8ff; /* Keep the same blue color in dark mode */
+}
+
+/* ... (rest of your CSS) ... */
