@@ -141,6 +141,8 @@
       </ul>
     </section>
 
+
+
     <section id="skills">
       <h2>Skills</h2>
       <ul>
@@ -150,54 +152,62 @@
             <li>AWS</li>
             <ul>
               <li>Compute: EC2, Lambda, ECS, EKS</li>
+              <li>Storage: S3, DynamoDB</li>
               <li>Database: RDS, DocumentDB, ElasticCache</li>
-              <li>Storage: S3</li>
               <li>Networking: VPC, Route 53, ELB</li>
               <li>Security: IAM, Security Groups, KMS</li>
               <li>Monitoring & Logging: CloudWatch, CloudTrail</li>
-              <li>Other: CloudFormation, CodePipeline, CodeBuild, CodeDeploy</li>
             </ul>
           </ul>
         </li>
         <li>
           <h3>DevOps & Automation</h3>
           <ul>
-            <li>CI/CD </li>
+            <h4>CI/CD </h4>
             <ul>
               <li>Jenkins</li>
               <li>Terraform</li>
-              <li>Github Actions</li>
-              <li>Harness.io</li>
+              <li>GitHub Actions</li>
+              <li>Harness</li>
             </ul>
-            <li>Automation</li>
+            <h4>Automation</h4>
             <ul>
               <li>Ansible</li>
             </ul>
-            <li>Infrastructure as Code</li>
+            <h4>Infrastructure as Code</h4>
             <ul>
-              <li>Terraform</li>
-              <li>Terraform Enterprises</li>
+              <li>Terraform OSS</li>
+              <li>Terraform Enterprise</li>
             </ul>
-            <li>Containerization</li>
+            <h4>Containerization</h4>
             <ul>
               <li>Docker</li>
               <li>Podman</li>
-              <li>K3s</li>
               <li>Kubernetes</li>
+              <ul>
+                <li>Rancher</li>
+                <li>K3s</li>
+                <li>Minikube</li>
+                <li>Kind</li>
+                <li>EKS</li>
+                <li>AWS</li>
+              </ul>
             </ul>
-            <li>Scripting</li>
+            <h4>Scripting</h4>
             <ul>
               <li>Bash</li>
               <li>Python</li>
               <li>Shell</li>
             </ul>
-            <li>Monitoring & Logging </li>
-            <ul>
-              <li>Logstash</li>
-              <li>Elasticsearch</li>
-              <li>Kibana</li>
-              <li>ELK</li>
-            </ul>
+          </ul>
+        </li>
+        <li>
+          <h3>Monitoring & Logging </h3>
+          <ul>
+            <li>Logstash</li>
+            <li>Elasticsearch</li>
+            <li>Kibana</li>
+            <li>ELK Stack</li>
           </ul>
         </li>
         <li>
@@ -215,25 +225,14 @@
           </ul>
         </li>
         <li>
-          <h3>Kubernetes</h3>
-          <ul>
-            <li>Kalico</li>
-            <li>Rancher</li>
-            <li>HELM</li>
-            <li>Rancher</li>
-            <li>HELMLISTS</li>
-            <li>HELMFILE</li>
-          </ul>
-        </li>
-        <li>
           <h3>Other</h3>
           <ul>
             <li>Nginx Ingress</li>
             <li>VoIP Systems</li>
-            <li>GSuite</li>
+            <li>GSuites</li>
             <li>Linux/Unix Systems Administration</li>
-            <li>FLASK</li>
-            <li>Docker</li>
+            <li>Flask</li>
+            <li>Git</li>
           </ul>
         </li>
       </ul>
@@ -289,6 +288,11 @@
   </main>
 </body>
 
+<footer>
+  <p>&copy; 2023 Nyle Garcia. All rights reserved.</p>
+  <div id="status" class="status unknown">Checking...</div>
+</footer>
+
 </html>
 
 <script>
@@ -308,4 +312,27 @@
     skillsSection.classList.toggle('dark-mode'); // Toggle the skills section
     darkModeToggle.classList.toggle('active');
   });
+
+  fetch('https://api.github.com/repos/NyleGarcia/nyle-garcia.systems/actions/runs')
+    .then(response => response.json())
+    .then(data => {
+      const latestRun = data.workflow_runs[0];
+      const statusElement = document.getElementById('status');
+
+      if (latestRun.status === 'completed') {
+        if (latestRun.conclusion === 'success') {
+          statusElement.textContent = 'Latest run was successful!';
+          statusElement.className = 'status success';
+        } else {
+          statusElement.textContent = 'Latest run failed.';
+          statusElement.className = 'status failure';
+        }
+      } else {
+        statusElement.textContent = 'Latest run is in progress...';
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching GitHub Actions data:', error);
+      document.getElementById('status').textContent = 'Error fetching data.';
+    });
 </script>
