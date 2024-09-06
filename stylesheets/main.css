@@ -221,3 +221,12 @@ body {
 .skill-category li {
   margin-bottom: 5px;
 }
+
+.skill-group {
+  margin-bottom: 15px; /* Add some space between groups */
+}
+
+.skill-group h4 {
+  font-weight: bold; /* Make the headings stand out */
+  margin-bottom: 5px;
+}
